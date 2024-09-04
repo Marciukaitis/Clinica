@@ -2,7 +2,6 @@ package com.backend.clinica.entity;
 
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity

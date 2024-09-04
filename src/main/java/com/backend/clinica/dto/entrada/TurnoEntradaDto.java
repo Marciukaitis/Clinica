@@ -1,6 +1,4 @@
 package com.backend.clinica.dto.entrada;
-
-import com.backend.clinica.dto.salida.PacienteSalidaDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;

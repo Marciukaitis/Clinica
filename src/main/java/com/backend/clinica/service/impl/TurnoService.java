@@ -1,10 +1,7 @@
 package com.backend.clinica.service.impl;
-
 import com.backend.clinica.dto.entrada.TurnoEntradaDto;
 import com.backend.clinica.dto.salida.TurnoSalidaDto;
 import com.backend.clinica.entity.Turno;
-import com.backend.clinica.repository.OdontologoRepository;
-import com.backend.clinica.repository.PacienteRepository;
 import com.backend.clinica.repository.TurnoRepository;
 import com.backend.clinica.service.ITurnoService;
 import com.backend.clinica.utils.JsonPrinter;
@@ -18,34 +15,26 @@ import java.util.List;
 @Service
 public class TurnoService implements ITurnoService {
     private static final Logger LOGGER = LoggerFactory.getLogger(TurnoService.class);
-    private OdontologoRepository odontologoRepository;
-    private PacienteRepository pacienteRepository;
+    private final OdontologoService odontologoService;
+    private PacienteService pacienteService;
     private TurnoRepository turnoRepository;
     private final ModelMapper modelMapper;
 
-    public TurnoService(OdontologoRepository odontologoRepository, PacienteRepository pacienteRepository, TurnoRepository turnoRepository, ModelMapper modelMapper) {
-        this.odontologoRepository = odontologoRepository;
-        this.pacienteRepository = pacienteRepository;
+    public TurnoService(OdontologoService odontologoService, PacienteService pacienteService, TurnoRepository turnoRepository, ModelMapper modelMapper) {
+        this.odontologoService = odontologoService;
+        this.pacienteService = pacienteService;
         this.turnoRepository = turnoRepository;
         this.modelMapper = modelMapper;
         configureMapping();
     }
 
 
+    //verificar que paciente y odontologo exista, lanzar excepciones para los tres casos
+
     @Override
     public TurnoSalidaDto guardarTurno(TurnoEntradaDto turno) {
-        // verificar que paciente y odontologo exista
 
-
-        LOGGER.info("TurnoEntradaDto:{}", JsonPrinter.toString(turno));
-        Turno entidadTurno = modelMapper.map(turno,Turno.class);
-        LOGGER.info("EntidadTurno: {}",JsonPrinter.toString(entidadTurno));
-        Turno turnoGuardado = turnoRepository.save(entidadTurno);
-        LOGGER.info("TurnoGuardado: {}", JsonPrinter.toString(turnoGuardado));
-        TurnoSalidaDto turnoSalidaDto = modelMapper.map(turnoGuardado, TurnoSalidaDto.class);
-        LOGGER.info("TurnoSalidaDto: {}", JsonPrinter.toString(turnoSalidaDto));
-
-        return turnoSalidaDto;
+        return null;
     }
 
     @Override

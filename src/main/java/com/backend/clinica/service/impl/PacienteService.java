@@ -3,6 +3,7 @@ package com.backend.clinica.service.impl;
 import com.backend.clinica.dto.entrada.PacienteEntradaDto;
 import com.backend.clinica.dto.salida.PacienteSalidaDto;
 import com.backend.clinica.entity.Paciente;
+import com.backend.clinica.exceptions.ResourceNotFoundException;
 import com.backend.clinica.repository.PacienteRepository;
 import com.backend.clinica.service.IPacienteService;
 import com.backend.clinica.utils.JsonPrinter;
@@ -39,7 +40,7 @@ public class PacienteService implements IPacienteService {
         return pacienteSalidaDto;
     }
 
-    @Override//NO HAY QUE LANZAR LA EXCEPCION ACA NI EN NINGUN SERVICIO EN EL METODO buscarPorId
+    @Override
     public PacienteSalidaDto buscarPacientePorId(Long id) {
         Paciente pacienteBuscado = pacienteRepository.findById(id).orElse(null);
         LOGGER.info("Paciente buscado: {}", JsonPrinter.toString(pacienteBuscado));
@@ -64,13 +65,12 @@ public class PacienteService implements IPacienteService {
     }
 
 
-    public void eliminarPaciente(Long id) {
+    public void eliminarPaciente(Long id) throws ResourceNotFoundException {
         if(buscarPacientePorId(id) != null){
-            //llamada a la capa repositorio para eliminar
             pacienteRepository.deleteById(id);
             LOGGER.warn("Se ha eliminado el paciente con id {}", id);
         } else {
-            //excepcion resource not found
+            throw new ResourceNotFoundException("No existe el paciente con id " + id);
         }
 
     }

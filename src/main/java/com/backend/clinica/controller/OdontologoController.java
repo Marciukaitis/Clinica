@@ -5,7 +5,6 @@ import com.backend.clinica.dto.entrada.OdontologoEntradaDto;
 import com.backend.clinica.dto.salida.OdontologoSalidaDto;
 import com.backend.clinica.service.IOdontologoService;
 import jakarta.validation.Valid;
-import org.hibernate.dialect.unique.CreateTableUniqueDelegate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
