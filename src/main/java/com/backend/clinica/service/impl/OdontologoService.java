@@ -74,7 +74,7 @@ public class OdontologoService implements IOdontologoService {
     }
 
     @Override
-    public OdontologoSalidaDto actualizarOdontologo(OdontologoEntradaDto odontologoEntradaDto, Long id) {
+    public OdontologoSalidaDto actualizarOdontologo(OdontologoEntradaDto odontologoEntradaDto, Long id) throws ResourceNotFoundException {
         Odontologo odontologoParaActualizar = odontologoRepository.findById(id).orElse(null);
         Odontologo odontologoRecibido = modelMapper.map(odontologoEntradaDto,Odontologo.class);
         OdontologoSalidaDto odontologoSalidaDto = null;
@@ -86,24 +86,26 @@ public class OdontologoService implements IOdontologoService {
             odontologoRepository.save(odontologoParaActualizar);
             odontologoSalidaDto = modelMapper.map(odontologoParaActualizar, OdontologoSalidaDto.class);
             LOGGER.warn("Odontologo actualizado : {}", JsonPrinter.toString(odontologoSalidaDto));
-        } else LOGGER.error("No fue posible actualizar el paciente porque no se encuentra en nuestra base de datos");
-       // lanzar exception
-
+        }  else {
+        LOGGER.error("No fue posible actualizar el odontologo porque no se encuentra en nuestra base de datos");
+        throw new ResourceNotFoundException("No fue posible actualizar el odontologo porque no se encuentra en nuestra base de datos");
+    }
         return odontologoSalidaDto;
     }
 
 
-    public OdontologoSalidaDto buscarOdontologoPorMatricula(String nmatricula) {
+    public Odontologo buscarOdontologoPorMatricula(String nmatricula) {
         Odontologo odontologoBuscado = odontologoRepository.findByNmatricula(nmatricula);
         LOGGER.info("Odontologo buscado : {}", JsonPrinter.toString(odontologoBuscado));
-        OdontologoSalidaDto odontologoEncontrado = null;
-        if(odontologoBuscado != null) {
-            odontologoEncontrado = modelMapper.map(odontologoBuscado, OdontologoSalidaDto.class);
-            LOGGER.info("Odontologo encontrado: {}", JsonPrinter.toString(odontologoEncontrado));
-        }else LOGGER.error("No se ha encontrado el odontologo con numero de matricula {}", nmatricula);
 
-        return odontologoEncontrado;
+        if(odontologoBuscado == null) {
+            LOGGER.error("No se ha encontrado el odontologo con numero de matricula {}", nmatricula);
+//            throw new RuntimeException();
+        }
+
+        return odontologoBuscado;
     }
+
 
     private void configureMapping(){
         modelMapper.typeMap(OdontologoEntradaDto.class, Odontologo.class);

@@ -41,7 +41,7 @@ public class PacienteController {
 
     //PUT
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<PacienteSalidaDto> actualizarPaciente(@RequestBody @Valid PacienteEntradaDto paciente, @PathVariable Long id){
+    public ResponseEntity<PacienteSalidaDto> actualizarPaciente(@RequestBody @Valid PacienteEntradaDto paciente, @PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(pacienteService.actualizarPaciente(paciente, id), HttpStatus.OK);
     }
 
@@ -53,3 +53,17 @@ public class PacienteController {
     }
 
 }
+
+
+//{
+//    "nombre": "Juancito",
+//        "apellido": "de test",
+//        "dni": 23124,
+//        "fechaIngreso": "2024-09-05",
+//        "domicilioEntradaDto":
+//        {
+//        "calle": "Av. Libertador",
+//        "numero": 1234,
+//        "localidad": "Buenos Aires",
+//        "provincia": "Buenos Aires"
+//        }},

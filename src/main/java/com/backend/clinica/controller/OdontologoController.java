@@ -40,7 +40,7 @@ public class OdontologoController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@RequestBody @Valid OdontologoEntradaDto odontologo, @PathVariable Long id){
+    public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@RequestBody @Valid OdontologoEntradaDto odontologo, @PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo,id),HttpStatus.OK);
     }
 
@@ -50,3 +50,10 @@ public class OdontologoController {
         return new ResponseEntity<>("Odontologo eliminado",HttpStatus.NO_CONTENT);
     }
 }
+
+
+//{
+//     "nmatricula": "23124",
+//    "nombre": "Pepe",
+//    "apellido": "Perez"
+//    }

@@ -41,7 +41,7 @@ public class TurnoController {
 
     //PUT
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<TurnoSalidaDto> actualizarTurno(@RequestBody @Valid TurnoEntradaDto turno, @PathVariable Long id){
+    public ResponseEntity<TurnoSalidaDto> actualizarTurno(@RequestBody @Valid TurnoEntradaDto turno, @PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(iTurnoService.actualizarTurno(turno, id), HttpStatus.OK);
     }
 
@@ -53,3 +53,27 @@ public class TurnoController {
     }
 
 }
+
+
+//
+//{
+//    "fechaHora": "2024-09-07",
+//    "pacienteEntradaDto": {
+//    "nombre": "Juancito",
+//    "apellido": "de test",
+//    "dni": 23124,
+//    "fechaIngreso": "2024-09-05",
+//    "domicilioEntradaDto":
+//    {
+//    "calle": "Av. Libertador",
+//    "numero": 1234,
+//    "localidad": "Buenos Aires",
+//    "provincia": "Buenos Aires"
+//    }},
+//    "odontologoEntradaDto" :{
+//     "nmatricula": "23124",
+//    "nombre": "Pepe",
+//    "apellido": "Perez"
+//    }
+
+//    }
