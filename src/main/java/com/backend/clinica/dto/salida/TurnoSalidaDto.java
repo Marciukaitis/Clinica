@@ -6,18 +6,18 @@ import java.time.LocalDate;
 public class TurnoSalidaDto {
 
     private Long id;
-    private PacienteSalidaDto paciente;
-    private OdontologoSalidaDto odontologo;
+    private PacienteSalidaDto pacienteSalidaDto;
+    private OdontologoSalidaDto odontologoSalidaDto;
     private LocalDate fechaHora;
 
-    public TurnoSalidaDto(){
-
+    public TurnoSalidaDto() {
     }
 
-    public TurnoSalidaDto(Long id, PacienteSalidaDto paciente, OdontologoSalidaDto odontologo, LocalDate fechaHora) {
+
+    public TurnoSalidaDto(Long id, PacienteSalidaDto pacienteSalidaDto, OdontologoSalidaDto odontologoSalidaDto, LocalDate fechaHora) {
         this.id = id;
-        this.paciente = paciente;
-        this.odontologo = odontologo;
+        this.pacienteSalidaDto = pacienteSalidaDto;
+        this.odontologoSalidaDto = odontologoSalidaDto;
         this.fechaHora = fechaHora;
     }
 
@@ -29,20 +29,20 @@ public class TurnoSalidaDto {
         this.id = id;
     }
 
-    public PacienteSalidaDto getPaciente() {
-        return paciente;
+    public PacienteSalidaDto getPacienteSalidaDto() {
+        return pacienteSalidaDto;
     }
 
-    public void setPaciente(PacienteSalidaDto paciente) {
-        this.paciente = paciente;
+    public void setPacienteSalidaDto(PacienteSalidaDto pacienteSalidaDto) {
+        this.pacienteSalidaDto = pacienteSalidaDto;
     }
 
-    public OdontologoSalidaDto getOdontologo() {
-        return odontologo;
+    public OdontologoSalidaDto getOdontologoSalidaDto() {
+        return odontologoSalidaDto;
     }
 
-    public void setOdontologo(OdontologoSalidaDto odontologo) {
-        this.odontologo = odontologo;
+    public void setOdontologoSalidaDto(OdontologoSalidaDto odontologoSalidaDto) {
+        this.odontologoSalidaDto = odontologoSalidaDto;
     }
 
     public LocalDate getFechaHora() {

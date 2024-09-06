@@ -3,6 +3,7 @@ package com.backend.clinica.controller;
 
 import com.backend.clinica.dto.entrada.PacienteEntradaDto;
 import com.backend.clinica.dto.salida.PacienteSalidaDto;
+import com.backend.clinica.exceptions.ResourceNotFoundException;
 import com.backend.clinica.service.IPacienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -46,7 +47,7 @@ public class PacienteController {
 
     //DELETE
     @DeleteMapping("/eliminar")
-    public ResponseEntity<String> eliminarPaciente(@RequestParam Long id){
+    public ResponseEntity<String> eliminarPaciente(@RequestParam Long id) throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(id);
         return new ResponseEntity<>("Paciente eliminado correctamente", HttpStatus.NO_CONTENT);
     }

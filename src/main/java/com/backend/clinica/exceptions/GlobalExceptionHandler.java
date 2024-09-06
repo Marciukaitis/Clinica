@@ -38,8 +38,14 @@ public class GlobalExceptionHandler {
     }
 
 
+    @ExceptionHandler({BadRequestException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String,String> manejarBadRequestException (BadRequestException badRequestException) {
+        Map<String,String> mensaje = new HashMap<>();
+        mensaje.put("mensaje", "No fue posible procesar la solicitud: " + badRequestException.getMessage());
+        return mensaje;
+    }
 
-    //Manejar BadRequetException
 
 }
 

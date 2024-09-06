@@ -2,6 +2,8 @@ package com.backend.clinica.controller;
 
 import com.backend.clinica.dto.entrada.TurnoEntradaDto;
 import com.backend.clinica.dto.salida.TurnoSalidaDto;
+import com.backend.clinica.exceptions.BadRequestException;
+import com.backend.clinica.exceptions.ResourceNotFoundException;
 import com.backend.clinica.service.ITurnoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -21,7 +23,7 @@ public class TurnoController {
     }
 
     @PostMapping("/guardar")
-    public ResponseEntity<TurnoSalidaDto> guardarTurno(@RequestBody @Valid TurnoEntradaDto turnoEntradaDto) {
+    public ResponseEntity<TurnoSalidaDto> guardarTurno(@RequestBody @Valid TurnoEntradaDto turnoEntradaDto) throws BadRequestException {
         TurnoSalidaDto turnoSalidaDto = iTurnoService.guardarTurno(turnoEntradaDto);
         return new ResponseEntity<>(turnoSalidaDto, HttpStatus.CREATED);
     }
@@ -45,7 +47,7 @@ public class TurnoController {
 
     //DELETE
     @DeleteMapping("/eliminar")
-    public ResponseEntity<String> eliminarTurno(@RequestParam Long id){
+    public ResponseEntity<String> eliminarTurno(@RequestParam Long id) throws ResourceNotFoundException {
         iTurnoService.eliminarTurno(id);
         return new ResponseEntity<>("Turno eliminado correctamente", HttpStatus.NO_CONTENT);
     }

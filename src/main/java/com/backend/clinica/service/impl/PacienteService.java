@@ -1,6 +1,7 @@
 package com.backend.clinica.service.impl;
 
 import com.backend.clinica.dto.entrada.PacienteEntradaDto;
+import com.backend.clinica.dto.salida.OdontologoSalidaDto;
 import com.backend.clinica.dto.salida.PacienteSalidaDto;
 import com.backend.clinica.entity.Paciente;
 import com.backend.clinica.exceptions.ResourceNotFoundException;
@@ -97,6 +98,18 @@ public class PacienteService implements IPacienteService {
         return pacienteSalidaDto;
     }
 
+
+    public PacienteSalidaDto buscarPacientePorDni(int dni) {
+        Paciente pacienteBuscado = pacienteRepository.findByDni(dni);
+        LOGGER.info("Paciente buscado : {}", JsonPrinter.toString(pacienteBuscado));
+        PacienteSalidaDto pacienteEncontrado = null;
+        if(pacienteBuscado != null) {
+            pacienteEncontrado = modelMapper.map(pacienteBuscado, PacienteSalidaDto.class);
+            LOGGER.info("Paciente encontrado: {}", JsonPrinter.toString(pacienteEncontrado));
+        }else LOGGER.error("No se ha encontrado el paciente con dni {}", dni);
+
+        return pacienteEncontrado;
+    }
 
 
     private void configureMapping(){

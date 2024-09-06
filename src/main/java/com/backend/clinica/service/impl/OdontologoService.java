@@ -3,6 +3,7 @@ package com.backend.clinica.service.impl;
 import com.backend.clinica.dto.entrada.OdontologoEntradaDto;
 import com.backend.clinica.dto.salida.OdontologoSalidaDto;
 import com.backend.clinica.entity.Odontologo;
+import com.backend.clinica.exceptions.ResourceNotFoundException;
 import com.backend.clinica.repository.OdontologoRepository;
 import com.backend.clinica.service.IOdontologoService;
 import com.backend.clinica.utils.JsonPrinter;
@@ -63,12 +64,12 @@ public class OdontologoService implements IOdontologoService {
         }
 
     @Override
-    public void eliminarOdontologo(Long id) {
+    public void eliminarOdontologo(Long id) throws ResourceNotFoundException {
         if(buscarOdontologoPorId(id) != null){
             odontologoRepository.deleteById(id);
             LOGGER.warn("Se ha eliminado el paciente con id {}", id);
         } else {
-            //excepcion resource not found
+            throw new ResourceNotFoundException("No existe el paciente con id " + id);
         }
     }
 
@@ -92,8 +93,21 @@ public class OdontologoService implements IOdontologoService {
     }
 
 
+    public OdontologoSalidaDto buscarOdontologoPorMatricula(String nmatricula) {
+        Odontologo odontologoBuscado = odontologoRepository.findByNmatricula(nmatricula);
+        LOGGER.info("Odontologo buscado : {}", JsonPrinter.toString(odontologoBuscado));
+        OdontologoSalidaDto odontologoEncontrado = null;
+        if(odontologoBuscado != null) {
+            odontologoEncontrado = modelMapper.map(odontologoBuscado, OdontologoSalidaDto.class);
+            LOGGER.info("Odontologo encontrado: {}", JsonPrinter.toString(odontologoEncontrado));
+        }else LOGGER.error("No se ha encontrado el odontologo con numero de matricula {}", nmatricula);
+
+        return odontologoEncontrado;
+    }
+
     private void configureMapping(){
         modelMapper.typeMap(OdontologoEntradaDto.class, Odontologo.class);
         modelMapper.typeMap(Odontologo.class, OdontologoSalidaDto.class);
     }
-}
+
+    }
