@@ -22,6 +22,7 @@ public class DomicilioSalidaDto {
         this.provincia = provincia;
     }
 
+
     public Long getId() {
         return id;
     }

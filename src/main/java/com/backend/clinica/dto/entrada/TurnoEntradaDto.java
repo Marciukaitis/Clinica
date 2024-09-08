@@ -5,54 +5,56 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class TurnoEntradaDto {
 
 
     @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
     @NotNull(message = "Debe especificarse la fecha de turno requerido")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate fechaHora;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime fechaHora;
 
     @NotNull(message = "El odontologo no puede ser nulo")
     @Valid
-    private OdontologoEntradaDto odontologoEntradaDto;
+    private OdontologoEntradaDto odontologo;
 
     @NotNull(message = "El paciente no puede ser nulo")
     @Valid
-    private PacienteEntradaDto pacienteEntradaDto;
+    private PacienteEntradaDto paciente;
 
     public TurnoEntradaDto() {
 
     }
 
-    public TurnoEntradaDto(LocalDate fechaHora, OdontologoEntradaDto odontologoEntradaDto, PacienteEntradaDto pacienteEntradaDto) {
+
+    public TurnoEntradaDto(LocalDateTime fechaHora, OdontologoEntradaDto odontologo, PacienteEntradaDto paciente) {
         this.fechaHora = fechaHora;
-        this.odontologoEntradaDto = odontologoEntradaDto;
-        this.pacienteEntradaDto = pacienteEntradaDto;
+        this.odontologo = odontologo;
+        this.paciente = paciente;
     }
 
-    public LocalDate getFechaHora() {
+    public LocalDateTime getFechaHora() {
         return fechaHora;
     }
 
-    public void setFechaHora(LocalDate fechaHora) {
+    public void setFechaHora(LocalDateTime fechaHora) {
         this.fechaHora = fechaHora;
     }
 
-    public OdontologoEntradaDto getOdontologoEntradaDto() {
-        return odontologoEntradaDto;
+    public OdontologoEntradaDto getOdontologo() {
+        return odontologo;
     }
 
-    public void setOdontologoEntradaDto(OdontologoEntradaDto odontologoEntradaDto) {
-        this.odontologoEntradaDto = odontologoEntradaDto;
+    public void setOdontologo(OdontologoEntradaDto odontologo) {
+        this.odontologo = odontologo;
     }
 
-    public PacienteEntradaDto getPacienteEntradaDto() {
-        return pacienteEntradaDto;
+    public PacienteEntradaDto getPaciente() {
+        return paciente;
     }
 
-    public void setPacienteEntradaDto(PacienteEntradaDto pacienteEntradaDto) {
-        this.pacienteEntradaDto = pacienteEntradaDto;
+    public void setPaciente(PacienteEntradaDto paciente) {
+        this.paciente = paciente;
     }
 }

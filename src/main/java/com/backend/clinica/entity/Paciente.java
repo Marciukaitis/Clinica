@@ -20,6 +20,7 @@ import java.time.LocalDate;
 
         @Column(length = 30, nullable = false)
         private int dni;
+
         private LocalDate fechaIngreso;
 
         @OneToOne(cascade = CascadeType.ALL)

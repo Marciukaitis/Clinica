@@ -54,26 +54,24 @@ public class TurnoController {
 
 }
 
-
 //
 //{
-//    "fechaHora": "2024-09-07",
-//    "pacienteEntradaDto": {
-//    "nombre": "Juancito",
-//    "apellido": "de test",
-//    "dni": 23124,
-//    "fechaIngreso": "2024-09-05",
-//    "domicilioEntradaDto":
-//    {
-//    "calle": "Av. Libertador",
-//    "numero": 1234,
-//    "localidad": "Buenos Aires",
-//    "provincia": "Buenos Aires"
-//    }},
-//    "odontologoEntradaDto" :{
-//     "nmatricula": "23124",
-//    "nombre": "Pepe",
-//    "apellido": "Perez"
-//    }
-
-//    }
+//        "fechaHora": "2024-09-15T10:00:00",
+//        "paciente": {
+//        "nombre": "Juancito",
+//        "apellido": "de test",
+//        "dni": 23124,
+//        "fechaIngreso": "2024-09-10",
+//        "domicilioEntradaDto": {
+//        "calle": "Av. Libertador",
+//        "numero": 1234,
+//        "localidad": "Buenos Aires",
+//        "provincia": "Buenos Aires"
+//        }
+//        },
+//        "odontologo": {
+//        "nmatricula": "23124",
+//        "nombre": "Pepe",
+//        "apellido": "Perez"
+//        }
+//        }

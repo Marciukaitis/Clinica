@@ -54,12 +54,12 @@ public class PacienteController {
 
 }
 
-
+//
 //{
 //    "nombre": "Juancito",
 //        "apellido": "de test",
 //        "dni": 23124,
-//        "fechaIngreso": "2024-09-05",
+//        "fechaIngreso": "2024-09-10",
 //        "domicilioEntradaDto":
 //        {
 //        "calle": "Av. Libertador",

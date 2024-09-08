@@ -94,16 +94,18 @@ public class OdontologoService implements IOdontologoService {
     }
 
 
-    public Odontologo buscarOdontologoPorMatricula(String nmatricula) {
+    public OdontologoSalidaDto buscarOdontologoPorMatricula(String nmatricula) {
         Odontologo odontologoBuscado = odontologoRepository.findByNmatricula(nmatricula);
         LOGGER.info("Odontologo buscado : {}", JsonPrinter.toString(odontologoBuscado));
+        OdontologoSalidaDto odontologoEncontrado = null;
+        if (odontologoBuscado != null) {
+            odontologoEncontrado = modelMapper.map(odontologoBuscado, OdontologoSalidaDto.class);
+            LOGGER.info("Odontologo encontrado: {}", JsonPrinter.toString(odontologoEncontrado));
+        } else LOGGER.error("No se ha encontrado el odontologo con numero de matricula {}", nmatricula);
 
-        if(odontologoBuscado == null) {
-            LOGGER.error("No se ha encontrado el odontologo con numero de matricula {}", nmatricula);
-//            throw new RuntimeException();
-        }
+        return odontologoEncontrado;
 
-        return odontologoBuscado;
+
     }
 
 

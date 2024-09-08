@@ -10,6 +10,7 @@ public interface PacienteRepository extends JpaRepository<Paciente,Long> {
 //    @Query(value = "SELECT * FROM PACIENTES WHERE DNI = ?1", nativeQuery = true) //SQL
 //    Paciente buscarPacientePorDni(int dni);
 //
+
     Paciente findByDni(int dni);
 //    Paciente findByDniAndNombre(int dni, String nombre);
 //
