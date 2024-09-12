@@ -21,7 +21,7 @@ public class TurnoController {
     public TurnoController(ITurnoService iTurnoService) {
         this.iTurnoService = iTurnoService;
     }
-
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     @PostMapping("/guardar")
     public ResponseEntity<TurnoSalidaDto> guardarTurno(@RequestBody @Valid TurnoEntradaDto turnoEntradaDto) throws BadRequestException {
         TurnoSalidaDto turnoSalidaDto = iTurnoService.guardarTurno(turnoEntradaDto);

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Turnos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo"> 
+            <img src="img/logoClinica.jpg" alt="logoClinica">
+        </div>
+        <h1>Clínica Odontológica</h1>
+        <h2> Completa los siguientes datos para registrar turno: </h2>
+        <form id="turnoForm">
+            <div class="paciente"> 
+            <fieldset> 
+                <legend>Paciente</legend>
+                <label for="dniPaciente">DNI:</label>
+                <input type="number" id="dniPaciente" name="dniPaciente" required>
+
+                <label for="nombrePaciente">Nombre:</label>
+                <input type="text" id="nombrePaciente" name="nombrePaciente" required>
+
+                <label for="apellidoPaciente">Apellido:</label>
+                <input type="text" id="apellidoPaciente" name="apellidoPaciente" required>
+
+                <label for="fechaIngresoPaciente">Fecha de ingreso:</label>
+                <input type="date" id="fechaIngresoPaciente" name="fechaIngresoPaciente" required>
+
+                <fieldset>
+                    <legend>Domicilio del paciente</legend>
+                    <label for="callePaciente">Calle:</label>
+                    <input type="text" id="callePaciente" name="callePaciente" required>
+
+                    <label for="numeroCallePaciente">Número:</label>
+                    <input type="number" id="numeroCallePaciente" name="numeroCallePaciente" required>
+
+                    <label for="localidadPaciente">Localidad:</label>
+                    <input type="text" id="localidadPaciente" name="localidadPaciente" required>
+
+                    <label for="provinciaPaciente">Provincia:</label>
+                    <input type="text" id="provinciaPaciente" name="provinciaPaciente" required>
+                </fieldset>
+            </fieldset>
+        </div>
+        <div class="odontologo"> 
+            <fieldset>
+                <legend>Odontólogo</legend>
+                <label for="matriculaOdontologo">Matrícula:</label>
+                <input type="text" id="matriculaOdontologo" name="matriculaOdontologo" required>
+
+                <label for="nombreOdontologo">Nombre:</label>
+                <input type="text" id="nombreOdontologo" name="nombreOdontologo" required>
+
+                <label for="apellidoOdontologo">Apellido:</label>
+                <input type="text" id="apellidoOdontologo" name="apellidoOdontologo" required>
+            </fieldset>
+            </div>
+            <div class="turno">
+            <fieldset>
+                <legend>Turno</legend>
+                <label for="fechaHora">Fecha y hora:</label>
+                <input type="datetime-local" id="fechaHora" name="fechaHora" required>
+            </fieldset>
+        </div>
+            <button type="submit">Guardar turno</button>
+        </form>
+
+        <p id="message"></p>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

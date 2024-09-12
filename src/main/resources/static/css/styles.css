@@ -1,0 +1,96 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    text-align: center;
+    color: #dcdcdc;
+    color: #8de3e2;
+}
+h2{
+    text-align: center;
+    color: #dcdcdc;
+    font-size: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-weight: bold;
+    color: #eeeeee;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #4697a5;
+    padding-left:30px ;
+}
+
+input {
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #65ffe5;
+    color: #000000;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+
+button:hover {
+    background-color: #49fa6f;
+}
+
+#message {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #d9534f; 
+}
+
+.logo {
+    display: flex;
+    width: 70px;
+    height: 80px;
+    margin-right: 80px;
+}
+img {
+    border-radius: 17%;
+}
