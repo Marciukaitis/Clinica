@@ -1,7 +1,7 @@
 package com.backend.clinica.entity;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "DOMICILIOS")
@@ -74,9 +74,6 @@ public class Domicilio {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
-
-
-
 
 
 }

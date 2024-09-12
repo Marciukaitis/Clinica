@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,78 +28,77 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
-
 @SpringBootTest
 class TurnoServiceTest {
 
-        private final TurnoRepository turnoRepositoryMock = mock(TurnoRepository.class);
-        private final PacienteService pacienteServiceMock = mock(PacienteService.class);
-        private final OdontologoService odontologoServiceMock = mock(OdontologoService.class);
-        private ModelMapper modelMapper = new ModelMapper();
-        private TurnoEntradaDto turnoEntradaDto;
-        private Turno turno;
-        private PacienteSalidaDto pacienteSalidaDto;
-        private OdontologoSalidaDto odontologoSalidaDto;
-        private TurnoService turnoService = new TurnoService(odontologoServiceMock, pacienteServiceMock, turnoRepositoryMock, modelMapper);
+    private final TurnoRepository turnoRepositoryMock = mock(TurnoRepository.class);
+    private final PacienteService pacienteServiceMock = mock(PacienteService.class);
+    private final OdontologoService odontologoServiceMock = mock(OdontologoService.class);
+    private ModelMapper modelMapper = new ModelMapper();
+    private TurnoEntradaDto turnoEntradaDto;
+    private Turno turno;
+    private PacienteSalidaDto pacienteSalidaDto;
+    private OdontologoSalidaDto odontologoSalidaDto;
+    private TurnoService turnoService = new TurnoService(odontologoServiceMock, pacienteServiceMock, turnoRepositoryMock, modelMapper);
 
-        @BeforeEach
-        void setUp() {
+    @BeforeEach
+    void setUp() {
 
-            turno = new Turno(1L,
-                    new Paciente(1L, "Zulma", "Lobato", 556677, LocalDate.of(2024, 9, 18),
-                            new Domicilio(1L, "Avispas", 123, "unaLocalidad", "laProvincia")),
-                    new Odontologo("1343", "Pedro", "Alfonso"),
-                    LocalDateTime.of(2024, 10, 24, 10, 0));
+        turno = new Turno(1L,
+                new Paciente(1L, "Zulma", "Lobato", 556677, LocalDate.of(2024, 9, 18),
+                        new Domicilio(1L, "Avispas", 123, "unaLocalidad", "laProvincia")),
+                new Odontologo("1343", "Pedro", "Alfonso"),
+                LocalDateTime.of(2024, 10, 24, 10, 0));
 
-            turnoEntradaDto = new TurnoEntradaDto(LocalDateTime.of(2024, 10, 24, 10, 0),
-                    new OdontologoEntradaDto("1343", "Pedro", "Alfonso"),
-                    new PacienteEntradaDto("Zulma", "Lobato", 556677, LocalDate.of(2024, 9, 18),
-                            new DomicilioEntradaDto("Avispas", 123, "unaLocalidad", "laProvincia")));
+        turnoEntradaDto = new TurnoEntradaDto(LocalDateTime.of(2024, 10, 24, 10, 0),
+                new OdontologoEntradaDto("1343", "Pedro", "Alfonso"),
+                new PacienteEntradaDto("Zulma", "Lobato", 556677, LocalDate.of(2024, 9, 18),
+                        new DomicilioEntradaDto("Avispas", 123, "unaLocalidad", "laProvincia")));
 
-            pacienteSalidaDto = new PacienteSalidaDto(1L, "Zulma", "Lobato", 556677, LocalDate.of(2024, 9, 18),
-                    new DomicilioSalidaDto(1L, "Avispas", 123, "unaLocalidad", "laProvincia"));
+        pacienteSalidaDto = new PacienteSalidaDto(1L, "Zulma", "Lobato", 556677, LocalDate.of(2024, 9, 18),
+                new DomicilioSalidaDto(1L, "Avispas", 123, "unaLocalidad", "laProvincia"));
 
-            odontologoSalidaDto = new OdontologoSalidaDto(1L, "1343", "Pedro", "Alfonso");
-        }
+        odontologoSalidaDto = new OdontologoSalidaDto(1L, "1343", "Pedro", "Alfonso");
+    }
 
-        @Test
-       public void DeberiaGuardarTurnoConPacienteYOdontologoExistentes() throws BadRequestException {
+    @Test
+    public void DeberiaGuardarTurnoConPacienteYOdontologoExistentes() throws BadRequestException {
 
-            when(pacienteServiceMock.buscarPacientePorDni(556677)).thenReturn(pacienteSalidaDto);
-            when(odontologoServiceMock.buscarOdontologoPorMatricula("1343")).thenReturn(odontologoSalidaDto);
-            when(turnoRepositoryMock.save(any(Turno.class))).thenReturn(turno);
+        when(pacienteServiceMock.buscarPacientePorDni(556677)).thenReturn(pacienteSalidaDto);
+        when(odontologoServiceMock.buscarOdontologoPorMatricula("1343")).thenReturn(odontologoSalidaDto);
+        when(turnoRepositoryMock.save(any(Turno.class))).thenReturn(turno);
 
-            TurnoSalidaDto resultado = turnoService.guardarTurno(turnoEntradaDto);
+        TurnoSalidaDto resultado = turnoService.guardarTurno(turnoEntradaDto);
 
-            assertNotNull(resultado);
-            assertEquals(turno.getId(), resultado.getId());
-            verify(turnoRepositoryMock, times(1)).save(any(Turno.class));
-        }
+        assertNotNull(resultado);
+        assertEquals(turno.getId(), resultado.getId());
+        verify(turnoRepositoryMock, times(1)).save(any(Turno.class));
+    }
 
-        @Test
-        void deberiaBuscarTurnoPorId_YRetornarlo() {
-            when(turnoRepositoryMock.findById(1L)).thenReturn(Optional.of(turno));
+    @Test
+    void deberiaBuscarTurnoPorId_YRetornarlo() {
+        when(turnoRepositoryMock.findById(1L)).thenReturn(Optional.of(turno));
 
-            TurnoSalidaDto resultado = turnoService.buscarTurnoPorId(1L);
+        TurnoSalidaDto resultado = turnoService.buscarTurnoPorId(1L);
 
-            assertNotNull(resultado);
-            assertEquals(1L, resultado.getId());
-            verify(turnoRepositoryMock, times(1)).findById(1L);
-        }
+        assertNotNull(resultado);
+        assertEquals(1L, resultado.getId());
+        verify(turnoRepositoryMock, times(1)).findById(1L);
+    }
 
 
+    @Test
+    public void deberiaListarTodosLosTurnos() {
+        List<Turno> turnos = List.of(turno);
 
-        @Test
-        public void deberiaListarTodosLosTurnos() {
-            List<Turno> turnos = List.of(turno);
+        when(turnoRepositoryMock.findAll()).thenReturn(turnos);
 
-            when(turnoRepositoryMock.findAll()).thenReturn(turnos);
+        List<TurnoSalidaDto> listadoDeTurnos = turnoService.listarTurnos();
 
-            List<TurnoSalidaDto> listadoDeTurnos = turnoService.listarTurnos();
+        assertNotNull(listadoDeTurnos);
+        assertEquals(1, listadoDeTurnos.size());
+    }
 
-            assertNotNull(listadoDeTurnos);
-            assertEquals(1, listadoDeTurnos.size());
-        }
     @Test
     void deberiaLanzarBadRequestExceptionCuandoFaltaPacienteYOdontologo() {
         when(pacienteServiceMock.buscarPacientePorDni(anyInt())).thenReturn(null);
@@ -111,7 +111,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void deberiaEliminarTurnoConExito()  {
+    void deberiaEliminarTurnoConExito() {
         when(turnoRepositoryMock.findById(anyLong())).thenReturn(Optional.of(turno));
         doNothing().when(turnoRepositoryMock).deleteById(anyLong());
 
@@ -122,7 +122,7 @@ class TurnoServiceTest {
     }
 
 
-    }
+}
 
 
 

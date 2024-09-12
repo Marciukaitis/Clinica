@@ -4,13 +4,15 @@ import com.backend.clinica.dto.entrada.PacienteEntradaDto;
 import com.backend.clinica.dto.salida.PacienteSalidaDto;
 import com.backend.clinica.exceptions.ResourceNotFoundException;
 import com.backend.clinica.service.IPacienteService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("pacientes")
 public class PacienteController {
@@ -24,19 +26,19 @@ public class PacienteController {
 
 
     @PostMapping("/registrar")
-    public ResponseEntity<PacienteSalidaDto> registrarPaciente(@RequestBody @Valid PacienteEntradaDto pacienteEntradaDto){
+    public ResponseEntity<PacienteSalidaDto> registrarPaciente(@RequestBody @Valid PacienteEntradaDto pacienteEntradaDto) {
         PacienteSalidaDto pacienteSalidaDto = pacienteService.registrarPaciente(pacienteEntradaDto);
         return new ResponseEntity<>(pacienteSalidaDto, HttpStatus.CREATED);
     }
 
 
     @GetMapping("/listar")
-    public ResponseEntity<List<PacienteSalidaDto>> listarPacientes(){
+    public ResponseEntity<List<PacienteSalidaDto>> listarPacientes() {
         return new ResponseEntity<>(pacienteService.listarPacientes(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PacienteSalidaDto> buscarPacientePorId(@PathVariable Long id){
+    public ResponseEntity<PacienteSalidaDto> buscarPacientePorId(@PathVariable Long id) {
         return new ResponseEntity<>(pacienteService.buscarPacientePorId(id), HttpStatus.OK);
     }
 

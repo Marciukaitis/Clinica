@@ -9,29 +9,30 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 
 @SpringBootTest
 //@TestPropertySource(locations = "classpath:application-test.properties")
 class OdontologoServiceTest {
 
-    private final OdontologoRepository odontologoRepositoryMock = mock(OdontologoRepository.class);
-    private final ModelMapper modelMapper = new ModelMapper();
-    private final OdontologoService odontologoService = new OdontologoService(odontologoRepositoryMock,modelMapper);
     private static OdontologoEntradaDto odontologoEntradaDto;
     private static Odontologo odontologo;
+    private final OdontologoRepository odontologoRepositoryMock = mock(OdontologoRepository.class);
+    private final ModelMapper modelMapper = new ModelMapper();
+    private final OdontologoService odontologoService = new OdontologoService(odontologoRepositoryMock, modelMapper);
 
     @BeforeAll
-    static void setUp(){
+    static void setUp() {
 
-        odontologo = new Odontologo(1L,"5654","Marcelo","Tinelli");
+        odontologo = new Odontologo(1L, "5654", "Marcelo", "Tinelli");
 
-        odontologoEntradaDto = new OdontologoEntradaDto("5654","Marcelo","Tinelli");
+        odontologoEntradaDto = new OdontologoEntradaDto("5654", "Marcelo", "Tinelli");
     }
 
     @Test
@@ -57,14 +58,14 @@ class OdontologoServiceTest {
         OdontologoSalidaDto odontologoEncontrado = odontologoService.buscarOdontologoPorMatricula("5654");
 
         assertNotNull(odontologoEncontrado);
-        assertEquals("5654",odontologoEncontrado.getNmatricula());
+        assertEquals("5654", odontologoEncontrado.getNmatricula());
 
-        verify(odontologoRepositoryMock,times(1)).findByNmatricula("5654");
+        verify(odontologoRepositoryMock, times(1)).findByNmatricula("5654");
 
     }
 
     @Test
-    void deberiaEliminarElOdontologoConId1(){
+    void deberiaEliminarElOdontologoConId1() {
         when(odontologoRepositoryMock.findById(1L)).thenReturn(Optional.of(odontologo));
         doNothing().when(odontologoRepositoryMock).deleteById(1L);
 

@@ -11,10 +11,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -24,11 +26,12 @@ import static org.mockito.Mockito.*;
 //@TestPropertySource(locations = "classpath:application-test.properties")
 class PacienteServiceTest {
 
+    private static PacienteEntradaDto pacienteEntradaDto;
+    private static Paciente paciente;
     private final PacienteRepository pacienteRepositoryMock = mock(PacienteRepository.class);
     private final ModelMapper modelMapper = new ModelMapper();
     private final PacienteService pacienteService = new PacienteService(pacienteRepositoryMock, modelMapper);
-    private static PacienteEntradaDto pacienteEntradaDto;
-    private static Paciente paciente;
+
     @BeforeAll
     static void setUp() {
 
@@ -93,5 +96,5 @@ class PacienteServiceTest {
     }
 
 
-    }
+}
 

@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PacienteService implements IPacienteService {
     private final Logger LOGGER = LoggerFactory.getLogger(PacienteService.class);
@@ -74,7 +75,6 @@ public class PacienteService implements IPacienteService {
         }
 
 
-
     }
 
     @Override
@@ -93,10 +93,10 @@ public class PacienteService implements IPacienteService {
             pacienteSalidaDto = modelMapper.map(pacienteAActualizar, PacienteSalidaDto.class);
             LOGGER.warn("Paciente actualizado: {}", JsonPrinter.toString(pacienteSalidaDto));
 
-        }  else {
-        LOGGER.error("No fue posible actualizar el paciente porque no se encuentra en nuestra base de datos");
-        throw new ResourceNotFoundException("No fue posible actualizar el paciente porque no se encuentra en nuestra base de datos");
-    }
+        } else {
+            LOGGER.error("No fue posible actualizar el paciente porque no se encuentra en nuestra base de datos");
+            throw new ResourceNotFoundException("No fue posible actualizar el paciente porque no se encuentra en nuestra base de datos");
+        }
         return pacienteSalidaDto;
     }
 
@@ -115,12 +115,14 @@ public class PacienteService implements IPacienteService {
 
     }
 
-        private void configureMapping() {
-            modelMapper.typeMap(PacienteEntradaDto.class, Paciente.class)
-                    .addMappings(mapper -> mapper.map(PacienteEntradaDto::getDomicilioEntradaDto, Paciente::setDomicilio));
-            modelMapper.typeMap(Paciente.class, PacienteSalidaDto.class)
-                    .addMappings(mapper -> mapper.map(Paciente::getDomicilio, PacienteSalidaDto::setDomicilioSalidaDto));
-        };
+    private void configureMapping() {
+        modelMapper.typeMap(PacienteEntradaDto.class, Paciente.class)
+                .addMappings(mapper -> mapper.map(PacienteEntradaDto::getDomicilioEntradaDto, Paciente::setDomicilio));
+        modelMapper.typeMap(Paciente.class, PacienteSalidaDto.class)
+                .addMappings(mapper -> mapper.map(Paciente::getDomicilio, PacienteSalidaDto::setDomicilioSalidaDto));
     }
+
+    ;
+}
 
 

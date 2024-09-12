@@ -5,14 +5,14 @@ import com.backend.clinica.dto.entrada.OdontologoEntradaDto;
 import com.backend.clinica.dto.salida.OdontologoSalidaDto;
 import com.backend.clinica.exceptions.ResourceNotFoundException;
 import com.backend.clinica.service.IOdontologoService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("odontologos")
 public class OdontologoController {
@@ -31,26 +31,26 @@ public class OdontologoController {
 
 
     @GetMapping("/listar")
-    public ResponseEntity<List<OdontologoSalidaDto>> listarOdontologos(){
-        return new ResponseEntity<>(odontologoService.listarTodos(),HttpStatus.OK);
+    public ResponseEntity<List<OdontologoSalidaDto>> listarOdontologos() {
+        return new ResponseEntity<>(odontologoService.listarTodos(), HttpStatus.OK);
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<OdontologoSalidaDto> buscarOdontologoPorId(@PathVariable Long id){
-        return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id),HttpStatus.OK);
+    public ResponseEntity<OdontologoSalidaDto> buscarOdontologoPorId(@PathVariable Long id) {
+        return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id), HttpStatus.OK);
     }
 
 
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@RequestBody @Valid OdontologoEntradaDto odontologo, @PathVariable Long id) throws ResourceNotFoundException {
-        return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo,id),HttpStatus.OK);
+        return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/eliminar")
     public ResponseEntity<String> eliminarOdontologo(@RequestParam Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
-        return new ResponseEntity<>("Odontologo eliminado",HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("Odontologo eliminado", HttpStatus.NO_CONTENT);
     }
 }
 

@@ -1,7 +1,7 @@
 package com.backend.clinica.entity;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,22 +11,23 @@ public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
-@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "odontologo_id")
     private Odontologo odontologo;
 
-    @Column(length = 30,nullable = false)
+    @Column(length = 30, nullable = false)
     private LocalDateTime fechaHora;
 
 
-    public Turno(){
+    public Turno() {
 
 
     }
+
     public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDateTime fechaHora) {
         this.id = id;
         this.paciente = paciente;

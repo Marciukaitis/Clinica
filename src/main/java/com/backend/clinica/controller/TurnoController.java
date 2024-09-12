@@ -5,15 +5,16 @@ import com.backend.clinica.dto.salida.TurnoSalidaDto;
 import com.backend.clinica.exceptions.BadRequestException;
 import com.backend.clinica.exceptions.ResourceNotFoundException;
 import com.backend.clinica.service.ITurnoService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("turnos")
+@CrossOrigin   // (http://127.0.0.1:5500/ ))
 public class TurnoController {
 
     private ITurnoService iTurnoService;
@@ -23,7 +24,6 @@ public class TurnoController {
     }
 
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     @PostMapping("/guardar")
     public ResponseEntity<TurnoSalidaDto> guardarTurno(@RequestBody @Valid TurnoEntradaDto turnoEntradaDto) throws BadRequestException {
         TurnoSalidaDto turnoSalidaDto = iTurnoService.guardarTurno(turnoEntradaDto);
@@ -31,12 +31,12 @@ public class TurnoController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<TurnoSalidaDto>> listarTurnos(){
-        return new ResponseEntity<>(iTurnoService.listarTurnos(),HttpStatus.OK);
+    public ResponseEntity<List<TurnoSalidaDto>> listarTurnos() {
+        return new ResponseEntity<>(iTurnoService.listarTurnos(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TurnoSalidaDto> buscarTurnoPorId(@PathVariable Long id){
+    public ResponseEntity<TurnoSalidaDto> buscarTurnoPorId(@PathVariable Long id) {
         return new ResponseEntity<>(iTurnoService.buscarTurnoPorId(id), HttpStatus.OK);
     }
 

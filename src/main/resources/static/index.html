@@ -2,76 +2,76 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Formulario de Turnos</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="logo"> 
-            <img src="img/logoClinica.jpg" alt="logoClinica">
-        </div>
-        <h1>Clínica Odontológica</h1>
-        <h2> Completa los siguientes datos para registrar turno: </h2>
-        <form id="turnoForm">
-            <div class="paciente"> 
-            <fieldset> 
+<div class="container">
+    <div class="logo">
+        <img alt="logoClinica" src="img/logoClinica.jpg">
+    </div>
+    <h1>Clínica Odontológica</h1>
+    <h2> Completa los siguientes datos para registrar turno: </h2>
+    <form id="turnoForm">
+        <div class="paciente">
+            <fieldset>
                 <legend>Paciente</legend>
                 <label for="dniPaciente">DNI:</label>
-                <input type="number" id="dniPaciente" name="dniPaciente" required>
+                <input id="dniPaciente" name="dniPaciente" required type="number">
 
                 <label for="nombrePaciente">Nombre:</label>
-                <input type="text" id="nombrePaciente" name="nombrePaciente" required>
+                <input id="nombrePaciente" name="nombrePaciente" required type="text">
 
                 <label for="apellidoPaciente">Apellido:</label>
-                <input type="text" id="apellidoPaciente" name="apellidoPaciente" required>
+                <input id="apellidoPaciente" name="apellidoPaciente" required type="text">
 
                 <label for="fechaIngresoPaciente">Fecha de ingreso:</label>
-                <input type="date" id="fechaIngresoPaciente" name="fechaIngresoPaciente" required>
+                <input id="fechaIngresoPaciente" name="fechaIngresoPaciente" required type="date">
 
                 <fieldset>
                     <legend>Domicilio del paciente</legend>
                     <label for="callePaciente">Calle:</label>
-                    <input type="text" id="callePaciente" name="callePaciente" required>
+                    <input id="callePaciente" name="callePaciente" required type="text">
 
                     <label for="numeroCallePaciente">Número:</label>
-                    <input type="number" id="numeroCallePaciente" name="numeroCallePaciente" required>
+                    <input id="numeroCallePaciente" name="numeroCallePaciente" required type="number">
 
                     <label for="localidadPaciente">Localidad:</label>
-                    <input type="text" id="localidadPaciente" name="localidadPaciente" required>
+                    <input id="localidadPaciente" name="localidadPaciente" required type="text">
 
                     <label for="provinciaPaciente">Provincia:</label>
-                    <input type="text" id="provinciaPaciente" name="provinciaPaciente" required>
+                    <input id="provinciaPaciente" name="provinciaPaciente" required type="text">
                 </fieldset>
             </fieldset>
         </div>
-        <div class="odontologo"> 
+        <div class="odontologo">
             <fieldset>
                 <legend>Odontólogo</legend>
                 <label for="matriculaOdontologo">Matrícula:</label>
-                <input type="text" id="matriculaOdontologo" name="matriculaOdontologo" required>
+                <input id="matriculaOdontologo" name="matriculaOdontologo" required type="text">
 
                 <label for="nombreOdontologo">Nombre:</label>
-                <input type="text" id="nombreOdontologo" name="nombreOdontologo" required>
+                <input id="nombreOdontologo" name="nombreOdontologo" required type="text">
 
                 <label for="apellidoOdontologo">Apellido:</label>
-                <input type="text" id="apellidoOdontologo" name="apellidoOdontologo" required>
+                <input id="apellidoOdontologo" name="apellidoOdontologo" required type="text">
             </fieldset>
-            </div>
-            <div class="turno">
+        </div>
+        <div class="turno">
             <fieldset>
                 <legend>Turno</legend>
                 <label for="fechaHora">Fecha y hora:</label>
-                <input type="datetime-local" id="fechaHora" name="fechaHora" required>
+                <input id="fechaHora" name="fechaHora" required type="datetime-local">
             </fieldset>
         </div>
-            <button type="submit">Guardar turno</button>
-        </form>
+        <button type="submit">Guardar turno</button>
+    </form>
 
-        <p id="message"></p>
-    </div>
+    <p id="message"></p>
+</div>
 
-    <script src="scripts/script.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>
 

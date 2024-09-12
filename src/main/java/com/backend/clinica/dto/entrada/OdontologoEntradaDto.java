@@ -1,9 +1,8 @@
 package com.backend.clinica.dto.entrada;
 
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 public class OdontologoEntradaDto {
 
@@ -18,7 +17,7 @@ public class OdontologoEntradaDto {
     @NotBlank(message = "Debe especificarse el apellido del odontologo")
     private String apellido;
 
-        public OdontologoEntradaDto() {
+    public OdontologoEntradaDto() {
     }
 
     public OdontologoEntradaDto(String nmatricula, String nombre, String apellido) {

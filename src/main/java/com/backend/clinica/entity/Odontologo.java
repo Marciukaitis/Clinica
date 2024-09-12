@@ -1,7 +1,7 @@
 package com.backend.clinica.entity;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ODONTOLOGOS")
@@ -20,7 +20,7 @@ public class Odontologo {
     @Column(length = 30, nullable = false)
     private String apellido;
 
-    public Odontologo (){
+    public Odontologo() {
 
     }
 

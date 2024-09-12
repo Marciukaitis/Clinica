@@ -8,13 +8,16 @@ import com.backend.clinica.exceptions.ResourceNotFoundException;
 import java.util.List;
 
 
-
 public interface ITurnoService {
 
     TurnoSalidaDto guardarTurno(TurnoEntradaDto turno) throws BadRequestException;
+
     List<TurnoSalidaDto> listarTurnos();
+
     TurnoSalidaDto buscarTurnoPorId(Long id);
+
     void eliminarTurno(Long id) throws ResourceNotFoundException;
+
     TurnoSalidaDto actualizarTurno(TurnoEntradaDto turnoEntradaDto, Long id) throws ResourceNotFoundException;
 }
 

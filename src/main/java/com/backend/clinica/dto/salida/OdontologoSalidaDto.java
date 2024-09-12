@@ -1,7 +1,6 @@
 package com.backend.clinica.dto.salida;
 
 
-
 public class OdontologoSalidaDto {
 
     private Long id;
@@ -9,7 +8,7 @@ public class OdontologoSalidaDto {
     private String nombre;
     private String apellido;
 
-    public OdontologoSalidaDto(){
+    public OdontologoSalidaDto() {
 
     }
 

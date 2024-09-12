@@ -16,12 +16,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({ResourceNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> manejarResourceNotFoundException(ResourceNotFoundException resourceNotFoundException){
+    public Map<String, String> manejarResourceNotFoundException(ResourceNotFoundException resourceNotFoundException) {
         Map<String, String> mensaje = new HashMap<>();
         mensaje.put("mensaje", "Recurso no encontrado:  " + resourceNotFoundException.getMessage());
         return mensaje;
     }
-
 
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
@@ -42,8 +41,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({BadRequestException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String,String> manejarBadRequestException (BadRequestException badRequestException) {
-        Map<String,String> mensaje = new HashMap<>();
+    public Map<String, String> manejarBadRequestException(BadRequestException badRequestException) {
+        Map<String, String> mensaje = new HashMap<>();
         mensaje.put("mensaje", "No fue posible procesar la solicitud: " + badRequestException.getMessage());
         return mensaje;
     }
