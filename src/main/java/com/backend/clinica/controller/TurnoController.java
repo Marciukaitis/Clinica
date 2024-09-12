@@ -55,12 +55,12 @@ public class TurnoController {
 
 
 //{
-//        "fechaHora": "2024-09-23T10:00:00",
+//        "fechaHora": "2024-09-30T10:00:00",
 //        "paciente": {
 //        "nombre": "Juancito",
-//        "apellido": "de test",
+//        "apellido": "Lopez",
 //        "dni": 23124,
-//        "fechaIngreso": "2024-09-20",
+//        "fechaIngreso": "2024-09-25",
 //        "domicilioEntradaDto": {
 //        "calle": "Av. Libertador",
 //        "numero": 1234,
@@ -69,7 +69,7 @@ public class TurnoController {
 //        }
 //        },
 //        "odontologo": {
-//        "nmatricula": "23124",
+//        "nmatricula": "4564",
 //        "nombre": "Pepe",
 //        "apellido": "Perez"
 //        }
