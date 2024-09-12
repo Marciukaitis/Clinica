@@ -1,6 +1,5 @@
 package com.backend.clinica.controller;
 
-
 import com.backend.clinica.dto.entrada.PacienteEntradaDto;
 import com.backend.clinica.dto.salida.PacienteSalidaDto;
 import com.backend.clinica.exceptions.ResourceNotFoundException;
@@ -22,13 +21,15 @@ public class PacienteController {
     public PacienteController(IPacienteService pacienteService) {
         this.pacienteService = pacienteService;
     }
+
+
     @PostMapping("/registrar")
     public ResponseEntity<PacienteSalidaDto> registrarPaciente(@RequestBody @Valid PacienteEntradaDto pacienteEntradaDto){
         PacienteSalidaDto pacienteSalidaDto = pacienteService.registrarPaciente(pacienteEntradaDto);
         return new ResponseEntity<>(pacienteSalidaDto, HttpStatus.CREATED);
     }
 
-    //GET
+
     @GetMapping("/listar")
     public ResponseEntity<List<PacienteSalidaDto>> listarPacientes(){
         return new ResponseEntity<>(pacienteService.listarPacientes(), HttpStatus.OK);
@@ -39,13 +40,13 @@ public class PacienteController {
         return new ResponseEntity<>(pacienteService.buscarPacientePorId(id), HttpStatus.OK);
     }
 
-    //PUT
+
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<PacienteSalidaDto> actualizarPaciente(@RequestBody @Valid PacienteEntradaDto paciente, @PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(pacienteService.actualizarPaciente(paciente, id), HttpStatus.OK);
     }
 
-    //DELETE
+
     @DeleteMapping("/eliminar")
     public ResponseEntity<String> eliminarPaciente(@RequestParam Long id) throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(id);
@@ -59,7 +60,7 @@ public class PacienteController {
 //    "nombre": "Juancito",
 //        "apellido": "de test",
 //        "dni": 23124,
-//        "fechaIngreso": "2024-09-10",
+//        "fechaIngreso": "2024-09-20",
 //        "domicilioEntradaDto":
 //        {
 //        "calle": "Av. Libertador",

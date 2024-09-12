@@ -1,9 +1,11 @@
 package com.backend.clinica.dto.entrada;
 
+
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+
 
 public class DomicilioEntradaDto {
     @NotBlank(message = "Debe especificarse el nombre de la calle")

@@ -21,13 +21,14 @@ public class TurnoController {
     public TurnoController(ITurnoService iTurnoService) {
         this.iTurnoService = iTurnoService;
     }
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+
+
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     @PostMapping("/guardar")
     public ResponseEntity<TurnoSalidaDto> guardarTurno(@RequestBody @Valid TurnoEntradaDto turnoEntradaDto) throws BadRequestException {
         TurnoSalidaDto turnoSalidaDto = iTurnoService.guardarTurno(turnoEntradaDto);
         return new ResponseEntity<>(turnoSalidaDto, HttpStatus.CREATED);
     }
-
 
     @GetMapping("/listar")
     public ResponseEntity<List<TurnoSalidaDto>> listarTurnos(){
@@ -39,13 +40,11 @@ public class TurnoController {
         return new ResponseEntity<>(iTurnoService.buscarTurnoPorId(id), HttpStatus.OK);
     }
 
-    //PUT
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<TurnoSalidaDto> actualizarTurno(@RequestBody @Valid TurnoEntradaDto turno, @PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(iTurnoService.actualizarTurno(turno, id), HttpStatus.OK);
     }
 
-    //DELETE
     @DeleteMapping("/eliminar")
     public ResponseEntity<String> eliminarTurno(@RequestParam Long id) throws ResourceNotFoundException {
         iTurnoService.eliminarTurno(id);
@@ -54,14 +53,14 @@ public class TurnoController {
 
 }
 
-//
+
 //{
-//        "fechaHora": "2024-09-15T10:00:00",
+//        "fechaHora": "2024-09-23T10:00:00",
 //        "paciente": {
 //        "nombre": "Juancito",
 //        "apellido": "de test",
 //        "dni": 23124,
-//        "fechaIngreso": "2024-09-10",
+//        "fechaIngreso": "2024-09-20",
 //        "domicilioEntradaDto": {
 //        "calle": "Av. Libertador",
 //        "numero": 1234,

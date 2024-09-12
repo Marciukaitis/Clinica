@@ -73,6 +73,8 @@ public class PacienteService implements IPacienteService {
             throw new ResourceNotFoundException("No existe el paciente con id " + id);
         }
 
+
+
     }
 
     @Override

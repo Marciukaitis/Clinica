@@ -2,7 +2,6 @@ package com.backend.clinica.entity;
 
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,17 +12,10 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 @ManyToOne
-//    @OneToOne (cascade = CascadeType.MERGE)
-//    @OneToOne
-//    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
 @ManyToOne
-//    @OneToOne (cascade = CascadeType.MERGE)
-    //CascadeType.MERGE
-//    @OneToOne (cascade = CascadeType.ALL)
-//    @OneToOne
     @JoinColumn(name = "odontologo_id")
     private Odontologo odontologo;
 

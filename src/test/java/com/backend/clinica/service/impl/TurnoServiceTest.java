@@ -13,7 +13,6 @@ import com.backend.clinica.entity.Odontologo;
 import com.backend.clinica.entity.Paciente;
 import com.backend.clinica.entity.Turno;
 import com.backend.clinica.exceptions.BadRequestException;
-import com.backend.clinica.exceptions.ResourceNotFoundException;
 import com.backend.clinica.repository.TurnoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,7 +43,6 @@ class TurnoServiceTest {
 
         @BeforeEach
         void setUp() {
-//        MockitoAnnotations.openMocks(this);
 
             turno = new Turno(1L,
                     new Paciente(1L, "Zulma", "Lobato", 556677, LocalDate.of(2024, 9, 18),
@@ -113,7 +111,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void deberiaEliminarTurnoConExito() throws ResourceNotFoundException {
+    void deberiaEliminarTurnoConExito()  {
         when(turnoRepositoryMock.findById(anyLong())).thenReturn(Optional.of(turno));
         doNothing().when(turnoRepositoryMock).deleteById(anyLong());
 

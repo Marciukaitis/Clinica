@@ -77,7 +77,6 @@ public class TurnoService implements ITurnoService {
             turnoSalidaDto = modelMapper.map(turnoRegistrado, TurnoSalidaDto.class);
             LOGGER.info("turnoSalidaDto: {}", JsonPrinter.toString(turnoSalidaDto));
 
-
         return turnoSalidaDto;
     }
 

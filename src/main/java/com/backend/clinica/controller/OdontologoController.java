@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("odontologos")
 public class OdontologoController {
@@ -34,10 +35,12 @@ public class OdontologoController {
         return new ResponseEntity<>(odontologoService.listarTodos(),HttpStatus.OK);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<OdontologoSalidaDto> buscarOdontologoPorId(@PathVariable Long id){
         return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id),HttpStatus.OK);
     }
+
 
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@RequestBody @Valid OdontologoEntradaDto odontologo, @PathVariable Long id) throws ResourceNotFoundException {
